@@ -6,6 +6,7 @@ sorts s = new sorts();
 setBoard board;
 credit c = new credit();
 play g = new play();
+hero h = new hero();
 private int score;
 private String name;
 private ArrayList<leaderboards> lead = new ArrayList<leaderboards>(6);
@@ -64,6 +65,8 @@ void draw() {
       game = true;
       background(0);
       g.setShips();
+
+      h.display();
     }
   } else {
     cursor(ARROW);
@@ -91,12 +94,11 @@ void draw() {
   if (game==true) {
     home = false;
     //background(0);
-    
+
     background(0);
     g.display();
     g.update();
-   
-    
+    h.display();
   }
 }
 
