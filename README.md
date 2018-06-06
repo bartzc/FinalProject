@@ -44,6 +44,16 @@ June 7th
 Final touches and present
 
 
+Final Thoughts: 
+I have done most that I wanted to complete, some things are missing but still more complete than the average cod game
+
+Things that I want to finish over the summer:
+Shields go in
+Ships shoot back
+push to leaderboards
+easteregg
+
+
 Runner:
 import processing.sound.*;
 PFont type;
