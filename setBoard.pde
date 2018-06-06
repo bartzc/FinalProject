@@ -10,7 +10,7 @@ public class setBoard {
   }
 
   public void setPos() {
-    for (int i = 0; i < 10; i++) {
+    for (int i = 9; i >0; i++) {
       if (lead.get(i).getScore()>score) {
         lead.add(i, new leaderboards(name, score));
       }

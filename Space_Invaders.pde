@@ -1,4 +1,6 @@
 import processing.sound.*;
+import java.util.*;
+Scanner scan = new Scanner(System.in);
 PFont type;
 board b;
 openBoard list = new openBoard();
@@ -7,16 +9,19 @@ setBoard board;
 credit c = new credit();
 play g = new play();
 hero h = new hero();
+
 private int score;
 private String name;
-private ArrayList<leaderboards> lead = new ArrayList<leaderboards>(6);
+private ArrayList<leaderboards> lead = new ArrayList<leaderboards>();
 boolean right = true;
 boolean left = false;
 boolean down = false;
 
 boolean home = true;
 boolean play = true;
-boolean game = false;
+
+boolean end = false;
+boolean end1 = false;
 
 
 
@@ -39,6 +44,10 @@ void draw() {
     text("leaderboards", 275, 850);
     text("credits", 374, 1000);
   }
+
+
+
+
 
   //leaderboards button
   if (home==true&&mouseX>=255&&mouseX<=740&&mouseY>=800&&mouseY<=855) {
@@ -99,16 +108,20 @@ void draw() {
     g.display();
     g.update();
     h.display();
+    if (game == false) {
+      end1 = true;
+    }
+  }
+
+  if (end1 == true) {
+    background(0);
+    text("You Won", 200, 600);
+    score = h.finalScore();
+    name = "Holder";
+    board = new setBoard(lead, name, score);
+    end1 = false;
+    if (mousePressed) {
+      home = true;
+    }
   }
 }
-
-
-
-/*
- play = g.gameEnd();
- //finalize leaderboards
- if(!play){
- score = g.finalScore();
- name = g.Name();
- board = new setBoard(lead, name, score);
- */

@@ -1,11 +1,14 @@
+ArrayList<ships> shipList = new ArrayList<ships>();
 public class play {
-  ArrayList<ships> shipList = new ArrayList<ships>();
+
 
   createShips s = new createShips();
   ships ship = new ships();
   boolean right = true;
   boolean left = false;
   boolean down = false;
+  int far = 10;
+  int near = 0;
 
   public play() {
   }
@@ -38,6 +41,7 @@ public class play {
     return shipList;
   }
   public void update() {
+    indexUpdate();
     for (int i = 0; i<shipList.size(); i++) {
 
       if (right==true) {
@@ -45,7 +49,7 @@ public class play {
         shipList.get(i).incrY(0);
         shipList.get(i).incrX(.75);
 
-        if (shipList.get(10).getX()>=900) {
+        if (shipList.get(far).getX()>=900) {
           right = false;
           left = true;
           down = true;
@@ -56,7 +60,7 @@ public class play {
         shipList.get(i).incrY(0);
         shipList.get(i).decX(.75);
 
-        if (shipList.get(0).getX()<=40) {
+        if (shipList.get(near).getX()<=40) {
           right = true;
           left = false;
           down = true;
@@ -70,6 +74,23 @@ public class play {
       down = false;
     }
   }
+  public void indexUpdate() {
+
+    for (int i = 0; i<shipList.size(); i++) {
+      if (far<shipList.size()&&shipList.get(far).getX()<shipList.get(i).getX()) {
+        far = i;
+      } else {
+        far=shipList.size()-1;
+      }
+    }
+    for (int i = 0; i <shipList.size(); i++) {
+      if (near>shipList.size()&&shipList.get(near).getX()>shipList.get(i).getX()) {
+        near = i;
+      } else {
+        near = 0;
+      }
+    }
+  }
 
 
 
@@ -80,6 +101,5 @@ public class play {
       image(shipList.get(i).getShip(), shipList.get(i).getX(), shipList.get(i).getY());
     }
     //update();
-    System.out.print(shipList.get(10).getX());
   }
 }
