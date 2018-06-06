@@ -58,7 +58,7 @@ public class hero {
         shots.remove(i);
       }
     }
-    if (shipCount==53) {
+    if (shipCount==0) {
       game = false;
     }
   }
